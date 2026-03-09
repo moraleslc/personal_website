@@ -7,7 +7,6 @@ import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'
 
 gsap.registerPlugin(ScrambleTextPlugin)
 
-
 const links = [
   { label: "LinkedIn", href: "https://linkedin.com/in/moraleslc" },
   { label: "GitHub",   href: "https://github.com/moraleslc" },
@@ -37,7 +36,7 @@ const ScrambleLink = ({ label, href }: { label: string; href: string }) => {
 
 const About = () => {
   return (
-    <div className='relative h-screen w-screen mt-8 overflow-hidden'>
+    <div id= "about" className='relative w-screen mt-8 overflow-hidden'>
       <h2 className='h2 font-code text-left mx-20'> About Me </h2>
       <div className='mx-20'>
         <p>Hi! I'm Carla (she/her), a Computer Science and Technology graduate from Tec de Monterrey, based in Mexico. I have a deep passion for the intersection of tech and design — particularly UI/UX — where I love crafting experiences that are as intuitive as they are visually thoughtful. </p>
