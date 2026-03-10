@@ -7,8 +7,8 @@ const Blog = async () => {
   const posts = await client.fetch<Post[]>(allPostsQuery);
 
   return (
-    <div id="blog" className="relative w-screen px-20 py-16">
-      <h2 className="h2 font-code text-left mb-12">Blog</h2>
+    <div id="blog" className="h-80 ml-20">
+      <h2 className="h2 font-code text-left">Blog</h2>
       <div className="flex flex-wrap gap-8">
         {posts.map((post) => (
           <Link key={post._id} href={`/blog/${post.slug.current}`}>

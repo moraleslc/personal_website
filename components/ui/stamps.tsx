@@ -1,5 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type Stamp = {
   country: string;
@@ -68,8 +73,37 @@ const StampItem = ({ stamp }: { stamp: Stamp }) => {
 };
 
 const Stamps = () => {
+  const stampsRef = useRef<HTMLDivElement>(null);
+
+useEffect(() => {
+  if (!stampsRef.current) return;
+
+  const ctx = gsap.context(() => {
+    const viewportCenter = window.innerHeight / 2;
+    const stampsHeight = stampsRef.current!.offsetHeight;
+    const centeredY = viewportCenter - stampsHeight / 2;
+
+    gsap.fromTo(
+      stampsRef.current,
+      { y: 0 },
+      {
+        y: centeredY,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#experience",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      }
+    );
+  });
+
+  return () => ctx.revert();
+}, []);
+
   return (
-    <div className="relative w-full h-full min-h-96">
+    <div ref={stampsRef} className="relative w-full h-full min-h-100">
       {stamps.map((stamp) => (
         <StampItem key={stamp.country} stamp={stamp} />
       ))}

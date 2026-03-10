@@ -7,6 +7,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
+@utility no-scrollbar {
+  @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+}
+
 :root {
   --background: #FCF9ED;
   --foreground: #ededed;
@@ -51,7 +55,8 @@ body {
 
 p {
   font-family: var(--font-spacemono), monospace;
-  color:#000
+  color:#000;
+  text-align: justify;
 }
 
 @layer components {

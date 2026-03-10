@@ -16,7 +16,7 @@ const experiences = [
     role: "SWE Intern",
     company: "Bosch",
     description: "Executed and automated tests for car safety systems using CANoe, winIDEA, vFlash, and vTESTstudio, covering requirement analysis, evaluation, and documentation in DOORS. Managed test documentation, design, and issue tracking through Jira within a Scrum workflow. Also contributed to a multicultural validation team, helping organize internal events to encourage knowledge sharing and team engagement.",
-    sticky: "My first internship! I had no idea so much went into testing and cars"
+    sticky: "My first internship! I had no idea so much went into testing and cars 🚗"
   },
 ];
 
@@ -33,7 +33,7 @@ const Experience = () => {
         </div>
 
         {/* Stamps */}
-        <div className="w-3/5 sticky top-20 h-150">
+        <div className="w-3/5 flex items-center justify-center">
           <Stamps />
         </div>
       </div>

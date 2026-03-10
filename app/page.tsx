@@ -7,19 +7,17 @@ import Blog from "@/components/Blog";
 
 export default function Home() {
   return (
-    <main className="relative w-full flex flex-col items-center justify-center">
+    <main className="relative w-screen flex flex-col items-start justify-center">
       {/* Hero */}
       <section id="hero" className="snap-start">
         <Hero />
       </section>
 
       {/* Remaining sections */}
-      <section id='about' className="snap-center">
         <About />
         <Experience />
         <Skills />
         <Blog />
-      </section>
     </main>
   );
 }

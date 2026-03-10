@@ -36,13 +36,12 @@ const ScrambleLink = ({ label, href }: { label: string; href: string }) => {
 
 const About = () => {
   return (
-    <div id= "about" className='relative w-screen mt-8 overflow-hidden'>
+    <div id= "about" className='relative mt-8 overflow-hidden'>
       <h2 className='h2 font-code text-left mx-20'> About Me </h2>
       <div className='mx-20'>
-        <p>Hi! I'm Carla (she/her), a Computer Science and Technology graduate from Tec de Monterrey, based in Mexico. I have a deep passion for the intersection of tech and design — particularly UI/UX — where I love crafting experiences that are as intuitive as they are visually thoughtful. </p>
-        <p>Alongside design, I have a strong interest in Quality Assurance, a field I hold close to my heart. There's something deeply satisfying about the meticulous, often invisible work that QA demands. I firmly believe that exceptional QA is an art form in itself — when done right, it goes completely unnoticed, and that's exactly the point. A seamless experience doesn't happen by accident.</p>
-        
-        <p> Aside from tech, I enjoy videogames, my main favorites being Minecraft, Sims and Ghost of Tsushima. My sweet spot will always be a Matcha!</p>
+        <p>Hi! I'm Carla (she/her), a Computer Science and Technology graduate from Tec de Monterrey, living in Mexico. </p>
+        <p>When I was a child, I loved spending time in the computer, a lot. I love the endless possibilities one can do with tech, especially design! We are always the end user of a product or service, and we never notice good design or quality when it's well done. Isn't that crazy? That's where QA is sometimes forgotten. When a project has a good QA team, you'll never notice. Quality Assurance work will always be a noble job, we'll always push for outstanding work so you never have a bad experience! 👀 </p>
+        <p> Aside from tech, I enjoy swimming, journaling, and videogames, my main favorites being Minecraft, Sims and Ghost of Tsushima (if it wasn't obvious lol). My soft spot will always be pigs and a Matcha!</p>
         
         <div className='flex gap-8 font-code mt-6'>
           
