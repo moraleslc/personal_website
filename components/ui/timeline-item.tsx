@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { gsap } from "gsap";
 
 export type Experience = {
+  id?: string;
   date: string;
   role: string;
   company: string;

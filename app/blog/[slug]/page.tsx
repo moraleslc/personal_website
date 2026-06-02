@@ -1,38 +1,49 @@
-import { client } from "@/sanity/client";
-import { postBySlugQuery } from "@/sanity/queries";
-import { Post } from "@/sanity/types";
-import { PortableText } from "@portabletext/react";
+"use client";
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import Link from "next/link";
+import ReactMarkdown from "react-markdown";
+import { getPostBySlug } from "@/lib/firestore";
 
-export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const post = await client.fetch<Post>(postBySlugQuery, { slug });
+type Post = {
+  id: string;
+  title: string;
+  slug: string;
+  body: string;
+  publishedAt: string;
+  excerpt?: string;
+};
 
-  if (!post) return <div className="px-20 py-16">Post not found.</div>;
+const PostPage = () => {
+  const { slug } = useParams();
+  const [post, setPost] = useState<Post | null>(null);
 
-  return (
-    <div className="relative w-screen px-20 py-16 max-w-3xl mx-auto">
-      <Link href="/#blog" className="inline-flex items-center gap-2 font-code text-sm mb-8 hover:-translate-x-1 transition-transform duration-200">
-        ← Back to Blog
-      </Link>
-      <div>
-        <span className="font-code text-xs text-gray-400">
-          {new Date(post.publishedAt).toLocaleDateString("en-US", {
-            year: "numeric", month: "long", day: "numeric"
-          })}
-        </span>
-        <h1 className="h1 font-handwriting text-left mt-2 mb-8">{post.title}</h1>
-        {post.coverImage && (
-          <img
-            src={post.coverImage.asset.url}
-            alt={post.title}
-            className="w-full h-72 object-cover rounded-xl mb-10 border-2 border-black"
-          />
-        )}
-        <div className="prose prose-lg">
-          <PortableText value={post.body} />
-        </div>
+  useEffect(() => {
+    const fetch = async () => {
+      const data = await getPostBySlug(slug as string);
+      setPost(data as unknown as Post);
+    };
+    fetch();
+  }, [slug]);
+
+  if (!post) return <div className="p-20 font-code">Loading...</div>;
+
+return (
+  <div className="min-h-screen px-20 py-16">
+    <Link href="/#blog" className="font-code text-sm opacity-60 hover:opacity-100 mb-8 inline-block">
+      ← Back to Main Page
+    </Link>
+    <div className="max-w-2xl mx-auto">
+      <span className="font-code text-xs text-gray-400 block mb-2">
+        {new Date(post.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+      </span>
+      <h1 className="font-handwriting text-7xl leading-30 text-center mb-8">{post.title}</h1>
+      <div className="prose prose-sm font-code">
+        <ReactMarkdown>{post.body}</ReactMarkdown>
       </div>
     </div>
-  );
-}
+  </div>
+);
+};
+
+export default PostPage;
